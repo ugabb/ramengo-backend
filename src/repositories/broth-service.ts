@@ -15,4 +15,14 @@ export class BrothService implements BrothRepository {
 
     return broths;
   }
+
+  async getBrothById(brothId: number): Promise<Broth | null> {
+    const broth = await prisma.broth.findUnique({
+      where: {
+        id: brothId,
+      },
+    });
+
+    return broth;
+  }
 }
