@@ -11,13 +11,11 @@ datasource db {
 }
 
 model Order {
-  id          Int     @id @default(autoincrement())
+  id          Int    @id @default(autoincrement())
   description String
   image       String
-  brothId     Int
-  broth       Broth   @relation(fields: [brothId], references: [id])
-  proteinId   Int
-  protein     Protein @relation(fields: [proteinId], references: [id])
+  Plate       Plate? @relation(fields: [plateId], references: [id])
+  plateId     Int?
 }
 
 model Broth {
@@ -27,7 +25,7 @@ model Broth {
   name          String
   description   String
   price         Float
-  Order         Order[]
+  Plate         Plate[]
 }
 
 model Protein {
@@ -37,5 +35,17 @@ model Protein {
   name          String
   description   String
   price         Float
-  Order         Order[]
+  Plate         Plate[]
+}
+
+model Plate {
+  id          Int     @id @default(autoincrement())
+  iamge       String
+  name        String
+  description String
+  brothId     Int
+  broth       Broth   @relation(fields: [brothId], references: [id])
+  proteinId   Int
+  protein     Protein @relation(fields: [proteinId], references: [id])
+  Order       Order[]
 }
