@@ -1,3 +1,15 @@
+export interface OrderResponse {
+  id: number;
+  description: string;
+  image: string;
+}
+
 export interface OrderRepository {
-  createOrder(brothId: string, proteinId: string): void;
+  createOrder(
+    orderId: number,
+    brothId: number,
+    proteinId: number,
+    description: string,
+    image: string
+  ): Promise<OrderResponse>;
 }
