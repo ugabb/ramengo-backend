@@ -17,4 +17,14 @@ export class ProteinService implements ProteinRepository {
 
     return proteins;
   }
+
+  async getProteinById(proteinId: number): Promise<Protein | null> {
+    const protein = await prisma.protein.findUnique({
+      where: {
+        id: proteinId,
+      },
+    });
+
+    return protein;
+  }
 }
