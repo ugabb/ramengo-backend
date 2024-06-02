@@ -4,8 +4,6 @@ import { OrderRepository, OrderResponse } from "./order-repository";
 export class OrderService implements OrderRepository {
   async createOrder(
     orderId: number,
-    brothId: number,
-    proteinId: number,
     description: string,
     image: string
   ): Promise<OrderResponse> {
@@ -14,12 +12,6 @@ export class OrderService implements OrderRepository {
         id: Number(orderId),
         description,
         image,
-        brothId,
-        proteinId,
-      },
-      include: {
-        broth: true,
-        protein: true,
       },
     });
 

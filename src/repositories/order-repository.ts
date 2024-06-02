@@ -7,8 +7,6 @@ export interface OrderResponse {
 export interface OrderRepository {
   createOrder(
     orderId: number,
-    brothId: number,
-    proteinId: number,
     description: string,
     image: string
   ): Promise<OrderResponse>;

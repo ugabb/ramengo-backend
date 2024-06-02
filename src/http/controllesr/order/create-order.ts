@@ -41,6 +41,7 @@ export async function createOrder(req: FastifyRequest, reply: FastifyReply) {
     // Lidar com outros erros
     return reply.status(500).send({
       error: "could not place order",
+      message: error.message,
     });
   }
 }
